@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Sorte</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game">
+      <header class="game__header">
+        <h1>Jogo da Sorte</h1>
+        <div class="status-panel">
+          <div class="status-panel__item">
+            <span class="status-panel__label">Timer:</span>
+            <span id="timer" class="status-panel__value">00:30</span>
+          </div>
+          <div class="status-panel__item">
+            <span class="status-panel__label">Resultado:</span>
+            <span id="resultado" class="status-panel__value"></span>
+          </div>
+        </div>
+        <div class="game__actions">
+          <button id="playBtn" class="btn">Jogar</button>
+          <button id="resetBtn" class="btn btn--secondary">Zerar Tudo</button>
+        </div>
+      </header>
+
+      <section class="board" aria-label="Figuras">
+        <h2>Figuras</h2>
+        <div class="figures" id="figures">
+          <button class="figure" data-index="0" data-symbol="✦"></button>
+          <button class="figure" data-index="1" data-symbol="◆"></button>
+          <button class="figure" data-index="2" data-symbol="✸"></button>
+          <button class="figure" data-index="3" data-symbol="✿"></button>
+          <button class="figure" data-index="4" data-symbol="✺"></button>
+          <button class="figure" data-index="5" data-symbol="✣"></button>
+          <button class="figure" data-index="6" data-symbol="✪"></button>
+          <button class="figure" data-index="7" data-symbol="✷"></button>
+          <button class="figure" data-index="8" data-symbol="✱"></button>
+        </div>
+      </section>
+
+      <section class="history" aria-label="Histórico de Jogadas">
+        <h2>Histórico</h2>
+        <table>
+          <tbody id="historyBody">
+            <tr class="history__header">
+              <th>Resultado</th>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+:root {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1f2933;
+  background-color: #f7f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  padding: 1.5rem;
+}
+
+.game {
+  width: min(960px, 100%);
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.15);
+  display: grid;
+  gap: 2rem;
+}
+
+.game__header h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #0f172a;
+}
+
+.status-panel {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.status-panel__item {
+  font-size: 1.1rem;
+}
+
+.status-panel__label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+  color: #475569;
+}
+
+.status-panel__value {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.game__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(99, 102, 241, 0.45);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn--secondary {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.35);
+}
+
+.board h2,
+.history h2 {
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #475569;
+}
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.figure {
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 1rem;
+  background-color: var(--base-color, #e2e8f0);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.35), 0 20px 35px rgba(15, 23, 42, 0.15);
+}
+
+.figure::after {
+  content: attr(data-symbol);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 4px 18px rgba(15, 23, 42, 0.45);
+}
+
+.figure:hover {
+  transform: translateY(-4px);
+}
+
+.figure:focus-visible {
+  outline: 4px solid #0ea5e9;
+  outline-offset: 4px;
+}
+
+.figure.state-green {
+  background-color: #16a34a !important;
+}
+
+.figure.state-red {
+  background-color: #dc2626 !important;
+}
+
+.figure.state-yellow {
+  background-color: #fbbf24 !important;
+}
+
+.history table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f8fafc;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px #e2e8f0;
+}
+
+.history__header th {
+  padding: 0.85rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.history__row td {
+  padding: 0.85rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.history__row--win td {
+  color: #16a34a;
+}
+
+.history__row--loss td {
+  color: #dc2626;
+}
+
+.history__row--timeout td {
+  color: #b91c1c;
+}
+
+@media (max-width: 640px) {
+  .game {
+    padding: 1.25rem;
+  }
+
+  .figure::after {
+    font-size: clamp(1.8rem, 10vw, 2.4rem);
+  }
+}
